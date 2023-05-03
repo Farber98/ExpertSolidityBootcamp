@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.4;
 
 contract Add {
@@ -8,11 +9,11 @@ contract Add {
         // Fix this code using memory to store the result between the blocks
         // and return the result from the second block
         assembly {
-            let result := add(x, y)
+            mstore(0x40, add(x, y))
         }
 
         assembly {
-            return()
+            return(0x40, 32)
         }
     }
 }
